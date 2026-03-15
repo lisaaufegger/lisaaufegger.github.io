@@ -25,7 +25,7 @@
     .sidebar-nav-label { font-size: 0.63rem; font-weight: 500; letter-spacing: 0.13em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 8px; }
     .sidebar-nav a { display: block; font-size: 0.86rem; color: var(--ink-muted); text-decoration: none; padding: 3px 0; transition: color 0.15s; line-height: 1.5; }
     .sidebar-nav a:hover, .sidebar-nav a.active { color: var(--accent); }
-    .sidebar-email { margin-top: auto; font-size: 0.76rem; color: var(--ink-faint); text-decoration: none; word-break: break-all; }
+    .sidebar-email { display: none; }
     .sidebar-email:hover { color: var(--accent); }
     .main { padding: 72px 0 80px; overflow-y: auto; height: 100vh; }
     .container { max-width: 680px; padding: 0 clamp(24px,5vw,64px); }
@@ -119,7 +119,7 @@
       .sidebar-nav-group { display: flex; gap: 14px; margin-bottom: 0; align-items: center; }
       .sidebar-nav-label { display: none; }
       .sidebar-nav a { padding: 6px 0; font-size: 0.8rem; }
-      .sidebar-email { margin-top: 0; }
+      .sidebar-email { display: none; }
       .main { padding: 32px 0; height: auto; overflow-y: visible; }
     }
   </style>
@@ -144,7 +144,7 @@
         <a href="index.html#contact">Contact</a>
       </div>
     </nav>
-    <a class="sidebar-email" href="mailto:lisa.aufegger@gmail.com">lisa.aufegger@gmail.com</a>
+    <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#108;&#105;&#115;&#97;&#46;&#97;&#117;&#102;&#101;&#103;&#103;&#101;&#114;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;" style="color:inherit;text-decoration:none;">&#108;&#105;&#115;&#97;&#46;&#97;&#117;&#102;&#101;&#103;&#103;&#101;&#114;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;</a>
   </aside>
 
   <div class="main"><div class="container">
@@ -219,9 +219,10 @@
           <span class="chevron">▼</span>
         </summary>
         <div class="details-body">
-          <p>Funnel stages and segment hypotheses were defined in collaboration with Product and Developer Growth. The survey assessed perceived ROI, demand perception, effort-to-start, and trusted information sources — each modelled separately then combined via OLS regression.</p>
-          <p><strong>Segmentation:</strong> Developers segmented by engagement pattern, background, and funnel position — revealing different barrier profiles. Android developers were identified as high-potential but underleveraged.</p>
-          <p><strong>Phase 2:</strong> Defined a "success window" framework — tracking movement between stages during the first week rather than static user counts.</p>
+          <p><strong>Data quality &amp; preparation.</strong> Raw survey exports were consolidated across markets, validated for skip logic and quota compliance, and filtered using pre-specified QC rules — removing speeders, straight-liners, failed attention checks, and duplicates. Four composite indices were constructed (ROI expectations, demand perception, effort-to-start, trusted sources) and validated with reliability checks before combining items.</p>
+          <p><strong>Segmentation.</strong> Two complementary approaches were used: theory-driven rule-based cohorts cut on key indices and funnel stage, and model-assisted clustering on standardised drivers to validate natural groupings. Segments were assessed for size, interpretability, and stability across countries and demographics — then compared on tool adoption, intent, and first-week behaviours to confirm meaningful distinction.</p>
+          <p><strong>Driver modelling.</strong> Three logistic/ordinal regression models were run — Consideration → Intent, Intent → First Build, and Early Activation → Optimisation — with predictors including ROI expectations, demand perception, effort-to-start, trust in sources, and prior experience. Diagnostics included VIF checks for multicollinearity, pseudo R² and AUC for model fit, and sensitivity tests across weighted vs. unweighted samples and alternative codings.</p>
+          <p><strong>Phase 2 (N≈300).</strong> A deeper dive into the first 7 days compared daily vs. non-daily builders and modelled first-week activation using effect sizes (standardised coefficients and odds ratios), segment concentration, and practical feasibility to prioritise the highest-lift levers.</p>
         </div>
       </details>
     </div>
@@ -368,12 +369,6 @@
 
   </div></div>
 </div>
-<script>
-  document.querySelectorAll('details').forEach(d => {
-    d.addEventListener('toggle', () => {
-      if (d.open) document.querySelectorAll('details').forEach(o => { if (o !== d) o.removeAttribute('open'); });
-    });
-  });
-</script>
+<script
 </body>
 </html>
